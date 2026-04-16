@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openPointer — Side Panel</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <div class="sidepanel">
+    <!-- Header -->
+    <div class="sp-header">
+      <div class="sp-logo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/>
+          <path d="M13 13l6 6"/>
+        </svg>
+        <span>open<strong>Pointer</strong></span>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="sp-tabs">
+      <button class="sp-tab active" data-tab="assistant">Assistant</button>
+      <button class="sp-tab" data-tab="macros">Macros</button>
+      <button class="sp-tab" data-tab="accessibility">Accessibility</button>
+    </div>
+
+    <!-- Tab Content: Assistant -->
+    <div class="sp-content" id="tab-assistant">
+      <!-- Page Info -->
+      <div class="sp-card" id="page-info">
+        <div class="sp-card-header">
+          <span class="sp-card-icon">🌐</span>
+          <span class="sp-card-title">Current Page</span>
+        </div>
+        <div class="sp-card-body">
+          <div class="page-title" id="page-title">Loading...</div>
+          <div class="page-url" id="page-url"></div>
+          <div class="page-stats" id="page-stats"></div>
+        </div>
+      </div>
+
+      <!-- AI Chat -->
+      <div class="sp-card sp-chat-card">
+        <div class="sp-card-header">
+          <span class="sp-card-icon">💬</span>
+          <span class="sp-card-title">AI Assistant</span>
+        </div>
+        <div class="sp-chat" id="chat-messages">
+          <div class="chat-msg assistant">
+            <div class="chat-bubble">
+              Hello! I'm your openPointer assistant. Ask me anything about this page, or give me a command.
+            </div>
+          </div>
+        </div>
+        <div class="sp-chat-input">
+          <input type="text" id="chat-input" placeholder="Ask about this page..." />
+          <button id="chat-send">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="sp-card">
+        <div class="sp-card-header">
+          <span class="sp-card-icon">⚡</span>
+          <span class="sp-card-title">Quick Actions</span>
+        </div>
+        <div class="sp-actions">
+          <button class="sp-action-btn" data-action="summarize-page">📝 Summarize Page</button>
+          <button class="sp-action-btn" data-action="extract-contacts">📇 Extract Contacts</button>
+          <button class="sp-action-btn" data-action="smart-fill">✨ Smart Fill Forms</button>
+          <button class="sp-action-btn" data-action="label-elements">🏷️ Label Elements</button>
+          <button class="sp-action-btn" data-action="describe-page">📖 Describe Page</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Content: Macros -->
+    <div class="sp-content hidden" id="tab-macros">
+      <div class="sp-card">
+        <div class="sp-card-header">
+          <span class="sp-card-icon">⏺</span>
+          <span class="sp-card-title">Recording</span>
+        </div>
+        <div class="sp-card-body">
+          <button class="sp-record-btn" id="sp-record-btn">
+            <span class="sp-rec-dot" id="sp-rec-dot"></span>
+            <span id="sp-record-label">Start Recording</span>
+          </button>
+          <p class="sp-hint">Record your browser actions and replay them as intelligent macros.</p>
+        </div>
+      </div>
+
+      <div class="sp-card">
+        <div class="sp-card-header">
+          <span class="sp-card-icon">📂</span>
+          <span class="sp-card-title">Saved Macros</span>
+        </div>
+        <div id="sp-macro-list" class="sp-macro-list">
+          <div class="sp-empty">No saved macros yet. Start recording to create one.</div>
+        </div>
+      </div>
+
+      <div class="sp-card">
+        <div class="sp-card-header">
+          <span class="sp-card-icon">🧩</span>
+          <span class="sp-card-title">Community Skills</span>
+        </div>
+        <div class="sp-card-body">
+          <p class="sp-hint">Browse and import pre-built automation skills from the community marketplace.</p>
+          <button class="sp-secondary-btn" disabled>Coming Soon</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Content: Accessibility -->
+    <div class="sp-content hidden" id="tab-accessibility">
+      <div class="sp-card">
+        <div class="sp-card-header">
+          <span class="sp-card-icon">🗣️</span>
+          <span class="sp-card-title">Voice Command</span>
+        </div>
+        <div class="sp-card-body">
+          <div class="sp-voice-btn-wrapper">
+            <button class="sp-voice-btn" id="voice-btn">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                <line x1="12" y1="19" x2="12" y2="23"/>
+                <line x1="8" y1="23" x2="16" y2="23"/>
+              </svg>
+            </button>
+            <span class="sp-voice-label" id="voice-label">Click to speak</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-card">
+        <div class="sp-card-header">
+          <span class="sp-card-icon">♿</span>
+          <span class="sp-card-title">Accessibility Tools</span>
+        </div>
+        <div class="sp-actions">
+          <button class="sp-action-btn" id="btn-simplify">📖 Simplify Content</button>
+          <button class="sp-action-btn" id="btn-read-aloud">🔊 Read Aloud</button>
+          <button class="sp-action-btn" id="btn-high-contrast">🔲 High Contrast</button>
+          <button class="sp-action-btn" id="btn-large-text">🔤 Enlarge Text</button>
+        </div>
+      </div>
+
+      <div class="sp-card">
+        <div class="sp-card-header">
+          <span class="sp-card-icon">🧭</span>
+          <span class="sp-card-title">Guided Navigation</span>
+        </div>
+        <div class="sp-card-body">
+          <input type="text" id="nav-goal" class="sp-input" placeholder="What do you want to do on this page?" />
+          <button class="sp-primary-btn" id="btn-navigate">Guide Me</button>
+          <p class="sp-hint">Describe your goal and openPointer will guide you step-by-step.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

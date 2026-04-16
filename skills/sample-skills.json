@@ -1,0 +1,77 @@
+{
+  "skills": [
+    {
+      "id": "scrape-product-data",
+      "name": "Product Data Scraper",
+      "description": "Extract product names, prices, and descriptions from e-commerce pages",
+      "author": "openPointer Community",
+      "version": "1.0.0",
+      "category": "data-extraction",
+      "actions": [
+        {
+          "type": "extract",
+          "selectors": [".product-name", ".product-title", "h1"],
+          "field": "name"
+        },
+        {
+          "type": "extract",
+          "selectors": [".price", ".product-price", "[data-price]"],
+          "field": "price"
+        },
+        {
+          "type": "extract",
+          "selectors": [".description", ".product-description", "[itemprop='description']"],
+          "field": "description"
+        }
+      ]
+    },
+    {
+      "id": "monitor-stock-prices",
+      "name": "Stock Price Monitor",
+      "description": "Monitor and alert on stock price changes from financial websites",
+      "author": "openPointer Community",
+      "version": "1.0.0",
+      "category": "monitoring",
+      "actions": [
+        {
+          "type": "navigate",
+          "url": "https://finance.yahoo.com/quote/{symbol}"
+        },
+        {
+          "type": "extract",
+          "selectors": ["[data-field='regularMarketPrice']"],
+          "field": "price"
+        },
+        {
+          "type": "condition",
+          "check": "price_change > threshold",
+          "action": "notify"
+        }
+      ]
+    },
+    {
+      "id": "generate-report",
+      "name": "Web Report Generator",
+      "description": "Generate structured reports from web data across multiple pages",
+      "author": "openPointer Community",
+      "version": "1.0.0",
+      "category": "reporting",
+      "actions": [
+        {
+          "type": "collect",
+          "sources": ["current-tab", "linked-pages"],
+          "depth": 1
+        },
+        {
+          "type": "ai-process",
+          "prompt": "Generate a structured report from the collected data",
+          "output": "markdown"
+        },
+        {
+          "type": "download",
+          "format": "pdf"
+        }
+      ]
+    }
+  ]
+}

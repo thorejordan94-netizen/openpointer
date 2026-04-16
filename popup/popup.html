@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>openPointer</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="popup">
+    <!-- Header -->
+    <div class="popup-header">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/>
+          <path d="M13 13l6 6"/>
+        </svg>
+        <div>
+          <span class="logo-text">open<strong>Pointer</strong></span>
+          <span class="version">v1.0.0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="section">
+      <h3 class="section-title">Quick Actions</h3>
+      <div class="actions-grid">
+        <button class="action-btn" id="btn-summarize" title="Summarize current page">
+          <span class="action-icon">📝</span>
+          <span>Summarize Page</span>
+        </button>
+        <button class="action-btn" id="btn-extract" title="Extract contacts from page">
+          <span class="action-icon">📇</span>
+          <span>Extract Contacts</span>
+        </button>
+        <button class="action-btn" id="btn-fill" title="Smart fill forms on page">
+          <span class="action-icon">✨</span>
+          <span>Smart Fill</span>
+        </button>
+        <button class="action-btn" id="btn-label" title="Label interactive elements">
+          <span class="action-icon">🏷️</span>
+          <span>Label Elements</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- NL Command -->
+    <div class="section">
+      <h3 class="section-title">Natural Language Command</h3>
+      <div class="nl-input-wrapper">
+        <input type="text" id="nl-input" placeholder="e.g., 'Click the Sign Up button'" />
+        <button id="nl-submit" class="nl-submit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Macro Recording -->
+    <div class="section">
+      <h3 class="section-title">Automation</h3>
+      <button class="record-btn" id="btn-record">
+        <span class="rec-dot" id="rec-dot"></span>
+        <span id="record-label">Start Recording</span>
+      </button>
+      <div id="macro-list" class="macro-list"></div>
+    </div>
+
+    <!-- Footer -->
+    <div class="popup-footer">
+      <button class="footer-btn" id="btn-sidepanel">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <line x1="15" y1="3" x2="15" y2="21"/>
+        </svg>
+        Side Panel
+      </button>
+      <button class="footer-btn" id="btn-settings">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        Settings
+      </button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
